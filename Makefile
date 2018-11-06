@@ -1,17 +1,8 @@
 CC=gcc
 CFLAGS=-lWarn -pedantic
 
-tester: tester.o libmyifttt.a
-	cc tester.o -L. -lmyifttt -lcurl -lwiringPi -o tester
-
-irtester: irtester.o 
-	cc irtester.o -lwiringPi -o irtester
-
-blink: blink.o 
-	cc blink.o -lwiringPi -o blink
-
-button: button.o 
-	cc button.o -lwiringPi -o button
+lab06: lab06.o libmyifttt.a
+	cc lab06.o -L. -lmyifttt -lcurl -lwiringPi -o lab06
 
 libmyifttt.a:	ifttt.o
 	ar -rcs libmyifttt.a ifttt.o
@@ -19,10 +10,10 @@ libmyifttt.a:	ifttt.o
 ifttt.o: 	ifttt.c ifttt.h
 	$(CC) $(CFLAGS) -c -ansi $<
 
-tester.o:	tester.c ifttt.h
+lab06.o:	lab06.c ifttt.h
 	$(CC) $(CFLAGS) -c -ansi $<
 
-all:	tester irtester blink button
+all:	tester
 
 clean:
-	rm tester irtester *.o
+	rm lab06 *.o
