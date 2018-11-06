@@ -18,11 +18,12 @@ int main(int argc, char *argv[])
   now[5] = '\0';
   
   last_message = ReadTemperature(serial);
-  
+  lowest = last_message;  
+  highest = last_message;
   while(1){
     new = ReadTemperature(serial);
     if(new < lowest) lowest = new;
-    if(new > lowest) highest = new;
+    if(new > highest) highest = new;
     if(fabs(new-last_message) >= 1){
       last_message = new;
       
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
     delay(1000);
     printf("current read %.1f\n", new);
     printf("lowest read %.1f\n", lowest);
-    printf("highest read %.1f\n", highest);
+    printf("highest read %.1f\n//////////////////////////\n", highest);
   }
   
   return 0;
