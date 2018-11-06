@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
     }
     delay(1000);
     printf("current read %.1f\n", new);
+    printf("lowest read %.1f\n", lowest);
+    printf("highest read %.1f\n", highest);
   }
   
   return 0;
